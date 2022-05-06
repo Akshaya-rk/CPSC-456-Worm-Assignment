@@ -25,25 +25,5 @@ python3 worm.py.
 The first part of the extra credit has been attempted where we integrated a cleaner function to self-clean the worm in the infected machines. To execute the cleaner function we use either of the commands python worm.py -c or python worm.py --clean. 
 
 
+The second part of the extra credit has also be been attempted for the code but we were not sucessful in the implementation. 
 
-The second part of the extra credit has also be been attempted for the code but we havent implmented it using the topology.
-```
-def extendspread():
-
-   hosts= nmap.PortScanner()
-   liveHosts = []
-   for host in hosts:
-        if portScanner[host].state() == "up":    
-            liveHosts.append(host)
-            
-   if  "-m" in sys.argv or "--multi" in sys.argv:
-        mPortScanner = nmap.PortScanner()
-        mPortScanner.scan('10.20.22.0/25', arguments='-p 22 --open')
-        multiData = mPortScanner.all_hosts()
-
-        for multiHost in multiData:
-            if mPortScanner[multiHost].state() == "up":
-                liveHosts.append(multiHost)
-    
-    return liveHosts
-```
